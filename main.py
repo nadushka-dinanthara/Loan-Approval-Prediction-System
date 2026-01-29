@@ -7,6 +7,7 @@ import joblib
 
 from src.data_preprocessing import preprocess_features, save_preprocessed_data
 from src.encoding import encode_target
+from src.fairness_analysis import approval_rate_by_group, print_gap_report,self_employed_fairness_report
 
 
 # Paths
@@ -114,3 +115,28 @@ print(f"Logistic Regression -> Accuracy: {log_acc:.3f}, ROC-AUC: {log_roc:.3f}")
 print(f"Random Forest       -> Accuracy: {rf_acc:.3f}, ROC-AUC: {rf_roc:.3f}")
 
 print("\nAll models saved to:", MODEL_DIR)
+
+# Add predictions from trained model
+df_test = X_test.copy()
+df_test["loan_status"] = y_test
+df_test["prediction"] = log_model.predict(X_test)
+
+# Check gap by education
+rates = approval_rate_by_group(
+    df=df_test,
+    group_col="education",
+    prediction_col="prediction"
+)
+
+print_gap_report(
+    rates,
+    group_col="education",
+    mapping={1: "Graduate", 0: "Not Graduate"}
+)
+
+
+self_emp_rates, gap_self_emp = self_employed_fairness_report(
+    df,
+    group_col="self_employed",
+    prediction_col="loan_status"
+)

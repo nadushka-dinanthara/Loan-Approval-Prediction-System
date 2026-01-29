@@ -37,5 +37,12 @@ The dataset should include the following columns:
 
 ---
 
-## Project Structure
+## Fairness Considerations
 
+We have evaluated the model to ensure it treats different applicant groups fairly. This includes checking approval rates across key categories such as **self-employed status** and **education level**.  
+
+> Note: This section does not disclose specific outcomes, but highlights that fairness checks were part of the model development.
+
+---
+
+## Project Structure
