@@ -22,7 +22,7 @@ MODEL_DIR = "models/"
 df = pd.read_csv(RAW_PATH)
 
 
-# Step 2: Preprocess features
+# Step 2: Preprocess featuresssss
 
 df = preprocess_features(df)       # cleaning, encoding, dropping loan_id
 df = encode_target(df)             # encode target column
