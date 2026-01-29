@@ -46,3 +46,18 @@ We have evaluated the model to ensure it treats different applicant groups fairl
 ---
 
 ## Project Structure
+│
+├── data/
+│ └── loan_data.csv
+├── notebooks/
+│ └── exploration.ipynb
+├── src/
+│ ├── preprocessing.py
+│ ├── train_models.py
+│ ├── fairness_checks.py
+│ └── utils.py
+├── app/
+│ └── streamlit_app.py
+├── requirements.txt
+├── README.md
+└── .gitignore
